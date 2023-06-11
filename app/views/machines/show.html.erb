@@ -1,6 +1,13 @@
 <h1><%= @machine.location %> Vending Machine</h1>
 <h2>Snacks</h2>
 <div id="snacks">
+<h3>Add a Snack</h3>
+<%= form_with url: "/machines/#{@machine.id}/snacks", method: :post, local: true do |f| %>
+  <%= f.label :snack_id, "Snack ID" %>
+  <%= f.number_field :snack_id %>
+
+  <%= f.submit "Submit" %>
+<% end %>
 <% @machine.snacks.each do |snack| %>
   <p> <%= snack.name %> $<%= snack.price %> </p>
 <% end %>
